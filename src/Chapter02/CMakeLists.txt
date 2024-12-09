@@ -26,6 +26,6 @@ target_link_libraries( addImages ${OpenCV_LIBS})
 target_link_libraries( remapping ${OpenCV_LIBS})
 
 # copy required images to every directory with executable
-SET (  IMAGES     ${CMAKE_SOURCE_DIR}/../images/boldt.jpg       ${CMAKE_SOURCE_DIR}/../images/rain.jpg  )
+SET (  IMAGES     ${CMAKE_CURRENT_SOURCE_DIR}/../images/boldt.jpg       ${CMAKE_CURRENT_SOURCE_DIR}/../images/rain.jpg  )
 FILE(COPY ${IMAGES} DESTINATION .) ##将图片放在当前文件夹下(比如build)
 
