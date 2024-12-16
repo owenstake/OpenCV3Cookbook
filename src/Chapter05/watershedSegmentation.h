@@ -59,7 +59,8 @@ class WatershedSegmenter {
 	  cv::Mat getWatersheds() {
 	
 		cv::Mat tmp;
-		markers.convertTo(tmp,CV_8U,255,255);
+		// markers.convertTo(tmp,CV_8U,255,255);
+		markers.convertTo(tmp,CV_8U);
 
 		return tmp;
 	  }

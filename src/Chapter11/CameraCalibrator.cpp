@@ -21,7 +21,7 @@ Copyright (C) 2016 Robert Laganiere, www.laganiere.name
 
 // Open chessboard images and extract corner points
 int CameraCalibrator::addChessboardPoints(
-         const std::vector<std::string>& filelist, // list of filenames containing board images
+         std::vector<std::string>& filelist, // list of filenames containing board images
          cv::Size & boardSize,                     // size of the board
 		 std::string windowName) {                 // name of window to display results
 			                                       // if null, no display shown
@@ -86,7 +86,7 @@ int CameraCalibrator::addChessboardPoints(
 }
 
 // Add scene points and corresponding image points
-void CameraCalibrator::addPoints(const std::vector<cv::Point2f>& imageCorners, const std::vector<cv::Point3f>& objectCorners) {
+void CameraCalibrator::addPoints(std::vector<cv::Point2f>& imageCorners, std::vector<cv::Point3f>& objectCorners) {
 
 	// 2D image points from one view
 	imagePoints.push_back(imageCorners);          
@@ -96,7 +96,7 @@ void CameraCalibrator::addPoints(const std::vector<cv::Point2f>& imageCorners, c
 
 // Calibrate the camera
 // returns the re-projection error
-double CameraCalibrator::calibrate(const cv::Size imageSize)
+double CameraCalibrator::calibrate(cv::Size imageSize)
 {
 	// undistorter must be reinitialized
 	mustInitUndistort= true;
@@ -118,7 +118,7 @@ double CameraCalibrator::calibrate(const cv::Size imageSize)
 }
 
 // remove distortion in an image (after calibration)
-cv::Mat CameraCalibrator::remap(const cv::Mat &image, cv::Size &outputSize) {
+cv::Mat CameraCalibrator::remap(cv::Mat &image, cv::Size &outputSize) {
 
 	cv::Mat undistorted;
 

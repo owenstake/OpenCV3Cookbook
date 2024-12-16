@@ -4,6 +4,12 @@
 # set minimum required version for cmake
 cmake_minimum_required(VERSION 2.8)
 
+find_package( OpenCV 3.1 REQUIRED )
+
+include_directories( 
+    ${OpenCV_INCLUDE_DIRS} 
+)
+
 # add executable
 add_executable( interestPoints interestPoints.cpp)
 
@@ -11,9 +17,9 @@ add_executable( interestPoints interestPoints.cpp)
 target_link_libraries( interestPoints ${OpenCV_LIBS})
 
 # copy required images to every directory with executable
-SET (IMAGES ${CMAKE_SOURCE_DIR}/images/church01.jpg 
-            ${CMAKE_SOURCE_DIR}/images/church02.jpg
-            ${CMAKE_SOURCE_DIR}/images/church03.jpg)
+SET (IMAGES ${CMAKE_CURRENT_SOURCE_DIR}/../images/church01.jpg 
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/church02.jpg
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/church03.jpg)
 FILE(COPY ${IMAGES} DESTINATION .)
 FILE(COPY ${IMAGES} DESTINATION "Debug")
 FILE(COPY ${IMAGES} DESTINATION "Release")

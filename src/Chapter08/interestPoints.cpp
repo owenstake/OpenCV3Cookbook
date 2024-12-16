@@ -273,7 +273,10 @@ int main()
 
 	keypoints.clear();
 	// Construct the SIFT feature detector object
-	cv::Ptr<cv::xfeatures2d::SiftFeatureDetector> ptrSIFT = cv::xfeatures2d::SiftFeatureDetector::create();
+	// cv::Ptr<cv::xfeatures2d::SiftFeatureDetector> ptrSIFT = cv::xfeatures2d::SiftFeatureDetector::create();
+	// cv::Ptr<cv::xfeatures2d::SiftFeatureDetector> ptrSIFT = cv::SIFT::create();
+	// cv::Ptr<cv::xfeatures2d::SiftFeatureDetector> ptrSIFT = SIFT::create();
+	cv::Ptr<cv::SIFT> ptrSIFT = cv::SIFT::create();
 	// detect the keypoints
 	ptrSIFT->detect(image, keypoints);
 

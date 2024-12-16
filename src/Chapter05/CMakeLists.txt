@@ -4,6 +4,12 @@
 # set minimum required version for cmake
 cmake_minimum_required(VERSION 2.8)
 
+find_package( OpenCV 3.1 REQUIRED )
+
+include_directories( 
+    ${OpenCV_INCLUDE_DIRS} 
+)
+
 # add executable
 add_executable( morphology morphology.cpp)
 add_executable( segment segment.cpp)
@@ -15,12 +21,12 @@ target_link_libraries( segment ${OpenCV_LIBS})
 target_link_libraries( mserFeatures ${OpenCV_LIBS})
 
 # copy required images to every directory with executable
-SET (IMAGES ${CMAKE_SOURCE_DIR}/images/binary.bmp 
-			${CMAKE_SOURCE_DIR}/images/building.jpg
-			${CMAKE_SOURCE_DIR}/images/group.jpg
-			${CMAKE_SOURCE_DIR}/images/book.jpg
-			${CMAKE_SOURCE_DIR}/images/boldt.jpg
-			${CMAKE_SOURCE_DIR}/images/tower.jpg)
+SET (IMAGES ${CMAKE_CURRENT_SOURCE_DIR}/../images/binary.bmp 
+			${CMAKE_CURRENT_SOURCE_DIR}/../images/building.jpg
+			${CMAKE_CURRENT_SOURCE_DIR}/../images/group.jpg
+			${CMAKE_CURRENT_SOURCE_DIR}/../images/book.jpg
+			${CMAKE_CURRENT_SOURCE_DIR}/../images/boldt.jpg
+			${CMAKE_CURRENT_SOURCE_DIR}/../images/tower.jpg)
 FILE(COPY ${IMAGES} DESTINATION .)
 FILE(COPY ${IMAGES} DESTINATION "Debug")
 FILE(COPY ${IMAGES} DESTINATION "Release")

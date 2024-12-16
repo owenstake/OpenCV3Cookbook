@@ -115,8 +115,10 @@ int main()
 			// Extract bouding rectangles
 			cv::RotatedRect rr = cv::minAreaRect(*it);
             // check ellipse elongation
-			if (rr.size.height / rr.size.height > 0.6 || rr.size.height / rr.size.height < 1.6)
+			// if (rr.size.height / rr.size.height > 0.6 || rr.size.height / rr.size.height < 1.6)
+			if (rr.size.height / rr.size.width > 0.6 || rr.size.height / rr.size.width < 1.6)
 				cv::ellipse(image, rr, cv::Scalar(255), 2);
+                // cv::rectangle(image, rr, cv::Scalar(255), 2);
 		}
 	}
 

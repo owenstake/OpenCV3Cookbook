@@ -43,7 +43,7 @@ int main()
 
 	// Prepare the matcher (with default parameters)
 	// here SIFT detector and descriptor
-	RobustMatcher rmatcher(cv::xfeatures2d::SIFT::create(250));
+	RobustMatcher rmatcher(cv::SIFT::create(250));
 
 	// Match the two images
 	std::vector<cv::DMatch> matches;

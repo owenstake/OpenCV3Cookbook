@@ -4,6 +4,12 @@
 # set minimum required version for cmake
 cmake_minimum_required(VERSION 2.8)
 
+find_package( OpenCV 3.1 REQUIRED )
+
+include_directories( 
+    ${OpenCV_INCLUDE_DIRS} 
+)
+
 # add executable
 add_executable( calibrate calibrate.cpp CameraCalibrator.cpp)
 add_executable( cameraPose cameraPose.cpp)
@@ -17,15 +23,15 @@ target_link_libraries( estimateE ${OpenCV_LIBS})
 target_link_libraries( stereoMatcher ${OpenCV_LIBS})
 
 # copy required images to every directory with executable
-SET (IMAGES ${CMAKE_SOURCE_DIR}/images/bench2.jpg
-            ${CMAKE_SOURCE_DIR}/images/soup1.jpg
-            ${CMAKE_SOURCE_DIR}/images/soup2.jpg
-            ${CMAKE_SOURCE_DIR}/images/brebeuf1.jpg
-            ${CMAKE_SOURCE_DIR}/images/brebeuf2.jpg			
+SET (IMAGES ${CMAKE_CURRENT_SOURCE_DIR}/../images/bench2.jpg
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/soup1.jpg
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/soup2.jpg
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/brebeuf1.jpg
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/brebeuf2.jpg			
             calib.xml)
 FILE(COPY ${IMAGES} DESTINATION .)
 FILE(COPY ${IMAGES} DESTINATION "Debug")
 FILE(COPY ${IMAGES} DESTINATION "Release")
-FILE(COPY ${CMAKE_SOURCE_DIR}/images/chessboards/ DESTINATION ./chessboards/)
-FILE(COPY ${CMAKE_SOURCE_DIR}/images/chessboards/ DESTINATION "Debug/chessboards/")
-FILE(COPY ${CMAKE_SOURCE_DIR}/images/chessboards/ DESTINATION "Release/chessboards/")
+FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/chessboards/ DESTINATION ./chessboards/)
+FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/chessboards/ DESTINATION "Debug/chessboards/")
+FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/chessboards/ DESTINATION "Release/chessboards/")

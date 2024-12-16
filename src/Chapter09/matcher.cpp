@@ -166,7 +166,7 @@ int main()
 	std::cout << "Number of SIFT keypoints (image 2): " << keypoints2.size() << std::endl; 
 
 	// Extract the keypoints and descriptors
-	ptrFeature2D = cv::xfeatures2d::SIFT::create();
+	ptrFeature2D = cv::SIFT::create();
 	ptrFeature2D->detectAndCompute(image1, cv::noArray(), keypoints1, descriptors1);
 	ptrFeature2D->detectAndCompute(image2, cv::noArray(), keypoints2, descriptors2);
 
