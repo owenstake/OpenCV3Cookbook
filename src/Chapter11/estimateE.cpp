@@ -65,7 +65,7 @@ int main()
 	cv::Mat descriptors1, descriptors2;
 
 	// Construction of the SIFT feature detector 
-	cv::Ptr<cv::Feature2D> ptrFeature2D = cv::xfeatures2d::SIFT::create(500);
+	cv::Ptr<cv::Feature2D> ptrFeature2D = cv::SIFT::create(500);
 
 	// Detection of the SIFT features and associated descriptors
 	ptrFeature2D->detectAndCompute(image1, cv::noArray(), keypoints1, descriptors1);
