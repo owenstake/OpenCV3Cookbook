@@ -25,5 +25,6 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 https://github.com/opencv/opencv
 https://github.com/opencv/opencv_contrib
 https://github.com/Kitware/VTK
+https://github.com/PacktPublishing/OpenCV3-Computer-Vision-Application-Programming-Cookbook-Third-Edition
 https://github.com/PacktPublishing/OpenCV-4-Computer-Vision-Application-Programming-Cookbook-Fourth-Edition
 

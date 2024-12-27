@@ -4,6 +4,12 @@
 # set minimum required version for cmake
 cmake_minimum_required(VERSION 2.8)
 
+find_package( OpenCV 3.1 REQUIRED )
+
+include_directories( 
+    ${OpenCV_INCLUDE_DIRS} 
+)
+
 # add executable
 add_executable( recognizeFace recognizeFace.cpp)
 add_executable( detectObjects detectObjects.cpp)
@@ -15,18 +21,18 @@ target_link_libraries( detectObjects ${OpenCV_LIBS})
 target_link_libraries( trainSVM ${OpenCV_LIBS})
 
 # copy required images to every directory with executable
-SET (IMAGES ${CMAKE_SOURCE_DIR}/images/girl.jpg
-            ${CMAKE_SOURCE_DIR}/images/face0_1.png
-            ${CMAKE_SOURCE_DIR}/images/face0_2.png
-            ${CMAKE_SOURCE_DIR}/images/face1_1.png
-            ${CMAKE_SOURCE_DIR}/images/face1_2.png
-            ${CMAKE_SOURCE_DIR}/images/person.jpg
+SET (IMAGES ${CMAKE_CURRENT_SOURCE_DIR}/../images/girl.jpg
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/face0_1.png
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/face0_2.png
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/face1_1.png
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/face1_2.png
+            ${CMAKE_CURRENT_SOURCE_DIR}/../images/person.jpg
 )
 FILE(COPY ${IMAGES} DESTINATION .)
 FILE(COPY ${IMAGES} DESTINATION "Debug")
 FILE(COPY ${IMAGES} DESTINATION "Release")
-FILE(COPY ${CMAKE_SOURCE_DIR}/images/stopSamples/ DESTINATION ./stopSamples/)
-FILE(COPY ${CMAKE_SOURCE_DIR}/images/stopSamples/ DESTINATION "Debug/stopSamples/")
-FILE(COPY ${CMAKE_SOURCE_DIR}/images/stopSamples/ DESTINATION "Release/stopSamples/")
+FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/stopSamples/ DESTINATION ./stopSamples/)
+FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/stopSamples/ DESTINATION "Debug/stopSamples/")
+FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../images/stopSamples/ DESTINATION "Release/stopSamples/")
 
 
